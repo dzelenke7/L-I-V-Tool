@@ -74,13 +74,26 @@ turn-on point.
 ## Software
 
 ### Arduino Sketch
+Reads three analog voltages simultaneously; the junction of the sense 
+resistor and LED anode (A0), the LED cathode (A1), and the TIA output (A2). 
+Calculates LED current in milliamps (I = V_A0 / 100), LED forward voltage 
+in volts (V_LED = V_A0 - V_A1), and photodiode current in microamps 
+(I_photo = V_A2 / 1,000,000). Transmits all three values over serial at 
+9600 baud every 100ms.
 
-
-### Pyton Script
-
+### Python Script
+Establishes a serial connection with the Arduino and continuously reads 
+LED current, LED voltage, and photodiode current into three lists until 
+interrupted with Ctrl+C. Upon termination generates three side-by-side 
+subplots:
+- **L-I curve** — photodiode current vs LED current
+- **V-I curve** — LED voltage vs LED current  
+- **L-V curve** — photodiode current vs LED voltage
 
 **Libraries used:**
-
+- pyserial — serial communication with Arduino
+- matplotlib — data plotting and subplot generation
+- time — serial connection delay on startup
 
 ## Results
  
