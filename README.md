@@ -28,7 +28,7 @@ V = ADC × (5.0 / 1023.0)
 
 And calculates current directly from Ohm's law:
 
-I_LED = V / R_sense
+I_LED = V / R
 
 ### Transimpedance Amplifier (TIA)
 The BPW34 photodiode generates a tiny photocurrent proportional to incident 
@@ -39,7 +39,7 @@ V_out = I_photo × R_f
 
 The Arduino reads V_out and back-calculates I_photo:
 
-I_photo = V_out / R_
+I_photo = V_out / R_f
 
 ### What Each Curve Tells You
 
