@@ -48,7 +48,7 @@ ax2.set_title("V-I Curve")
 
 ax3.plot(voltage_LED, current_photo, 'g.')
 ax3.set_xlabel("LED Voltage(V)")
-ax3.set_ylabel("Photodiode Current (mA)")
+ax3.set_ylabel("Photodiode Current (µA)")
 ax3.set_title("L-V Curve")
 
 plt.tight_layout()
