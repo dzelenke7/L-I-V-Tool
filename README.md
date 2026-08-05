@@ -96,7 +96,19 @@ subplots:
 - time — serial connection delay on startup
 
 ## Results
- 
+
+Testing was preformed in low ambient light conditions (night) to minimize photodiode noise floor interference. The potentiometer was swept slowly from minimum to maximum current while the Python script logged all three parameters simultaneously.
+
+ ![L-I-V Curves](liv_results.png)
+(1302 readings)
+
+ **L-I Curve:** Light output remained near zero until a threshold current of **17.068mA**, after which photodiode current increased sharply before saturating near the LED's maximum drive current. This threshold behavior is characteristic of all LED and laser diode devices, below threshold recombination is primarily non-radiative; above it, stimulated and spontaneous emission dominate.
+
+**V-I Curve:** Forward voltage increased linearly with current from 0 to **2.05V**, consistent with the Shockley diode equation. A slight tapering of the slope at higher currents is noticeable, a real-world deviation from ideal diode behavior caused by series resistance and high-injection effects at elevated current densities
+
+ **L-V Curve:** Light output remained near zero until a threshold forward voltage of **1.71V**, after which optical output increased sharply, directly mirroring the threshold behavior seen in the L-I curve. This threshold voltage represents the minimum forward bias required to achieve significant radiative recombination in the LED junction.
+
+Together the three curves fully characterize the LED's electro-optical behavior. The L-I curve quantifies efficiency, the V-I curve characterizes electrical behavior, and the L-V curve ties optical output directly to the device's bias conditions.
 ## How to Run
 
 
