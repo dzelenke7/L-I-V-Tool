@@ -16,21 +16,21 @@ while True:
         line1 = ser.readline().decode('utf-8').strip()
         line2 = ser.readline().decode('utf-8').strip()
         line3 = ser.readline().decode('utf-8').strip()
-
-        print(f"Raw: '{line1}' '{line2}' '{line3}'")
-
-        current_mA.append(float(line1))
-        voltage_LED.append(float(line2))
-        current_photo.append(float(line3))
-
-        print(f"I_res: {float(line1):.1f} mA | V_LED: {float(line2):.2e} V | I_photo: {float(line3):.3f}")
+    
+        val1 = float(line1)
+        val2 = float(line2)
+        val3 = float(line3)
+    
+        current_mA.append(val1)
+        voltage_LED.append(val2)
+        current_photo.append(val3)
+    
+        print(f"I_res: {val1:.1f} mA | V_LED: {val2:.2f} V | I_photo: {val3:.3f} µA")
 
     except KeyboardInterrupt:
         break
-
     except Exception as e:
         print(f"Error: {e}")
-        print(f"Bad data was: '{line1}' '{line2}' '{line3}'")
 
 print(f"Total readings collected: {len(current_mA)}")
 
