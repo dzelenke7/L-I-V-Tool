@@ -111,5 +111,38 @@ Testing was preformed in low ambient light conditions (night) to minimize photod
 Together the three curves fully characterize the LED's electro-optical behavior. The L-I curve quantifies efficiency, the V-I curve characterizes electrical behavior, and the L-V curve ties optical output directly to the device's bias conditions.
 ## How to Run
 
+### Arduino Wiring
+- Analog 0: Junction of R1 & the LED anode
+- Analog 1: LED Cathode
+- Analog 2: LM358 Out1 & Rf
+- BPW34 Cathode: Pin 2 of LM358 & Rf
+- BPW34 Anode: GND
 
-## Limitations
+- Potentiometer wiper: Top of R1 
+- Potentiometer end: 5V
+
+### LM358 Transimpedence Amplifier
+- Pin 1: Rf & A2
+- Pin 2: Rf & BPW34 anode
+- Pin 3: GND
+- Pin 4: GND
+- Pin 5: N/A
+- Pin 6: N/A
+- Pin 7: N/A
+- Pin 8: VCC
+
+![L-I-V Sketch](L-I-V-Sketch1-1.png)
+
+### Running the Project
+
+1. **Upload the Arduino Sketch:** Open 'L-I-V-arduino.ino' in the Arduino IDE, select you board (Arduino Uno) and COM port under Tools, then click Upload. The Arduino will begin measuring I_LED, V_LED, I_photodiode
+
+2. **Run the Python Script:** Close the Arduino Serial Monitor (it locks the COM port), then run 'L-I-V-python.py' from the terminal (I used IDLE) in the project folder. Update the COM port in the script if it differs from you COM. The script will read live data from the Arduino and print it to the terminal in real time.
+
+3. **Expected output:** When running correctly, the live serial script prints a LED current in mA, LED voltage in V, and Photodiode current in uA, reading every 100ms. Python then produces three graphs, a L-I, V-I, L-V.
+
+4. **Interpreting:**
+   - L-I Curve: The photodiode's current will remain zero until the LED reaches its threshold current and you can observe a steep saturation region until the LED is at its max.
+   - V-I Curve: You can observe a clear linear relationship between the Voltage and Current in the LED.
+   - L-V Curve: The photodiode's current will remain zero until the LED reaches its threshold voltage and you can observe a steep saturation region until the LED is at its max.
+
